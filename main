@@ -2,6 +2,7 @@ import discord
 import os
 import random
 from discord.ext import commands
+from bot_cod import *
 
 
 intents = discord.Intents.default()
@@ -29,7 +30,15 @@ async def on_ready():
 
 @bot.command()
 async def hello(ctx):
-    await ctx.send(f'Привет! Я бот {bot.user}!')
+    await ctx.send(f'Привет! Я бот {bot.user}! Вот список моих команд: ' + '\n')
+    await ctx.send(f'1. stop_bot - команда досрочного отключения меня U+1F622' + '\n')
+    await ctx.send(f'2. stop - выйти из голосового канала' + '\n')
+    await ctx.send(f'2. join - совершить вход в голосовой канал;' + '\n')
+    await ctx.send(f'3. heh с указанием цифры или числа - я начинаю смеяться, но у меня есть секрет :)'+ '\n')
+    await ctx.send(f'4. mem - кидаю рандомный мем' + '\n')
+    await ctx.send(f'5. mem_rarity - кидаю мем по редкости' + '\n')
+    await ctx.send(f'6. rec - выдаю рандомную рекомендацию' + '\n')
+    await ctx.send(f'Команда начинается со символа "$"')
 
 @bot.command()
 async def heh(ctx, count_heh = 5):
@@ -53,7 +62,7 @@ async def mem(ctx):
     await ctx.send(file=picture)
 
 @bot.command()
-async def mem_rare(ctx):
+async def mem_rarity(ctx):
     i = random.randint(1, 100)
     if i >= 91:
         await ctx.send(f"Выпало число(цифра): {i}. Редкий!!! Поздравляю!!!")
